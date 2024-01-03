@@ -2,46 +2,36 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Classroom {
+
     private String className;
+
     private List<Student> studentList;
 
-    public String getClassName() {
-        return className;
+    public Classroom() {
     }
 
-    public void setClassName(String className) {
+    public Classroom(String className) {
         this.className = className;
+        this.studentList = new ArrayList<>();
     }
 
-    public List<Student> getStudentList() {
-        return studentList;
-    }
-
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
-    }
-
-    public Classroom(){};
-
-    public Classroom(String className){
-        this.className=className;
-        this.studentList=new ArrayList<>();
-    }
-
-    public void addStudent(Student student){
+    public void addStudent(Student student) {
         this.studentList.add(student);
     }
 
-    public List<Student> getStudentsWithMarks(Integer marks){
+    public List<Student> getStudentsWithMarks(Integer marks) {
         List<Student> students = new ArrayList<>();
-        for(int i=0;i<studentList.size();i++){
-            if(studentList.get(i).getMarks()>marks){
-                students.add(studentList.get(i));
+        for (Student student : studentList) {
+            if (student.getMarks() > marks) {
+                students.add(student);
             }
         }
         return students;
     }
-}
-    
+} 
